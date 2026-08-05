@@ -27,10 +27,8 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             overflow-x: hidden;
-            selection-background-color: var(--primary-red);
         }
 
-        /* Фоновый эмбиент свечения */
         .ambient-glow {
             position: fixed;
             top: -200px;
@@ -105,14 +103,12 @@
             color: var(--primary-red);
         }
 
-        /* Биография */
         .bio-text {
             color: var(--text-muted);
             line-height: 1.8;
             font-size: 1.05rem;
         }
 
-        /* Новый релиз */
         .upcoming-badge {
             display: inline-block;
             background: var(--dark-red);
@@ -137,83 +133,56 @@
         .cover-art {
             width: 100%;
             aspect-ratio: 1/1;
-            background: linear-gradient(135deg, #200205, #120507);
+            background: #fff;
             border-radius: 12px;
             border: 1px solid rgba(255, 30, 56, 0.3);
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(139, 0, 0, 0.3);
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(139, 0, 0, 0.3);
         }
 
-        .cover-art::after {
-            content: 'DEAMXHY';
-            font-weight: 900;
-            font-size: 1.2rem;
-            color: rgba(255, 30, 56, 0.4);
-            letter-spacing: 2px;
+        .cover-art img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .release-info h3 {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             margin-bottom: 8px;
+            letter-spacing: 1px;
         }
 
         .release-info p {
             color: var(--text-muted);
             margin-bottom: 20px;
-            font-size: 0.95rem;
+            font-size: 1rem;
         }
 
-        /* Плеер и треки */
-        .tracklist {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .track-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.02);
-            padding: 15px 20px;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s ease;
-        }
-
-        .track-item:hover {
-            border-color: rgba(255, 30, 56, 0.4);
-            background: rgba(255, 30, 56, 0.03);
-        }
-
-        .track-title {
-            font-weight: 600;
-        }
-
-        .play-btn {
+        .presave-btn {
+            display: inline-block;
             background: var(--primary-red);
             color: white;
-            border: none;
-            padding: 8px 20px;
-            border-radius: 6px;
-            cursor: pointer;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
             font-weight: 600;
-            transition: background 0.2s, transform 0.1s;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.2s ease;
+            box-shadow: 0 0 15px var(--accent-glow);
         }
 
-        .play-btn:hover {
+        .presave-btn:hover {
             background: #ff3b53;
-            transform: scale(1.05);
+            transform: scale(1.03);
         }
 
-        /* Кнопки ссылок */
         .links-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
         }
 
@@ -221,7 +190,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 14px;
+            padding: 16px;
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 30, 56, 0.2);
             border-radius: 10px;
@@ -229,6 +198,7 @@
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
+            letter-spacing: 0.5px;
         }
 
         .social-link:hover {
@@ -265,7 +235,7 @@
 
     <header>
         <h1 class="logo">Deamxhy</h1>
-        <p class="subtitle">Dark Sound / Underground Rap</p>
+        <p class="subtitle">Rap Artist</p>
     </header>
 
     <div class="container">
@@ -273,51 +243,34 @@
         <section>
             <h2><span>01 //</span> Биография</h2>
             <p class="bio-text">
-                Deamxhy — яркий представитель новой волны андеграундной сцены, формирующий уникальный мрачный вайб. Его треки сочетают в себе плотный басовый кач, атмосферные мелодии и глубокую лирику, завоевавшую преданную аудиторию по всему миру.
+                Кизыма Максим Владимирович (родился 8 сентября 2010 года) — рэп-исполнитель родом из Одесской области.
             </p>
         </section>
 
         <!-- Новый релиз -->
         <section>
-            <h2><span>02 //</span> Скоро релиз</h2>
+            <h2><span>02 //</span> Новый релиз</h2>
             <div class="upcoming-badge">Релиз 7 августа</div>
             <div class="release-grid">
-                <div class="cover-art"></div>
+                <div class="cover-art">
+                    <!-- Обложка трека FEEL LOVE -->
+                    <img src="https://t2.genius.com/unsafe/323x323/https%3A%2F%2Fimages.genius.com%2F1dcab253eaea39a13e41e6c9190b1a6d.1000x1000x1.jpg">
+                </div>
                 <div class="release-info">
-                    <h3>Новый Сингл</h3>
-                    <p>Долгожданный трек, который перевернет привычное звучание. Готовься услышать это первым.</p>
-                    <a href="#" class="social-link" style="display:inline-block; padding: 10px 25px;">Пресейв / Напомнить</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Треки и плеер -->
-        <section>
-            <h2><span>03 //</span> Треки</h2>
-            <div class="tracklist">
-                <div class="track-item">
-                    <span class="track-title">Deamxhy — Hit Single #1</span>
-                    <button class="play-btn" onclick="alert('Слушаем трек прямо здесь!')">Слушать</button>
-                </div>
-                <div class="track-item">
-                    <span class="track-title">Deamxhy — Underground Anthem</span>
-                    <button class="play-btn" onclick="alert('Слушаем трек прямо здесь!')">Слушать</button>
-                </div>
-                <div class="track-item">
-                    <span class="track-title">Deamxhy — Late Night Drive</span>
-                    <button class="play-btn" onclick="alert('Слушаем трек прямо здесь!')">Слушать</button>
+                    <h3>FEEL LOVE</h3>
+                    <p>Долгожданный сингл. Слушай пресейв по ссылке ниже, чтобы не пропустить премьеру.</p>
+                    <a href="https://band.link/bhjor" target="_blank" class="presave-btn">Слушать / Пресейв</a>
                 </div>
             </div>
         </section>
 
         <!-- Ссылки -->
         <section>
-            <h2><span>04 //</span> Стриминги и соцсети</h2>
+            <h2><span>03 //</span> Ссылки и соцсети</h2>
             <div class="links-grid">
-                <a href="https://spotify.com" target="_blank" class="social-link">Spotify</a>
-                <a href="https://apple.com" target="_blank" class="social-link">Apple Music</a>
-                <a href="https://telegram.org" target="_blank" class="social-link">Telegram</a>
-                <a href="https://youtube.com" target="_blank" class="social-link">YouTube</a>
+                <a href="https://t.me/deamxhy" target="_blank" class="social-link">Telegram Channel</a>
+                <a href="https://music.yandex.ru/artist/24382587" target="_blank" class="social-link">Яндекс Музыка</a>
+                <a href="https://open.spotify.com/artist/4yrBVMxkaVqZ6TeX3pPGJR?si=tLzSb6zKQmW4xO8Kk4SWIg" target="_blank" class="social-link">Spotify</a>
             </div>
         </section>
     </div>
