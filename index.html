@@ -1,283 +1,201 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DEAMXHY — Official Site</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-color: #080203;
-            --card-bg: #120507;
-            --primary-red: #ff1e38;
-            --dark-red: #8b0000;
-            --accent-glow: rgba(255, 30, 56, 0.3);
-            --text-main: #ffffff;
-            --text-muted: #a0a0a0;
-        }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DEAMXHY — Official Site</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #000;
+    --white: #fff;
+    --grey: #8a8a8a;
+    --display: "Anton", Impact, "Arial Narrow", sans-serif;
+    --body: "Manrope", "Helvetica Neue", Arial, sans-serif;
+    --pad: clamp(20px, 5vw, 64px);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  :focus-visible { outline: 3px solid currentColor; outline-offset: 4px; }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Outfit', sans-serif;
-        }
+  /* HERO */
+  .hero {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: var(--pad);
+    padding-bottom: 0;
+  }
+  .hero-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .hero-top a { border-bottom: 1px solid transparent; transition: border-color .2s; }
+  .hero-top a:hover { border-color: var(--white); }
+  .name {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(64px, 24vw, 420px);
+    line-height: .86;
+    letter-spacing: -.01em;
+    text-transform: uppercase;
+    margin-left: -.03em;
+    animation: rise 1s cubic-bezier(.2,.8,.2,1) both;
+  }
+  .role { font-size: clamp(16px, 2vw, 22px); font-weight: 600; margin-top: 20px; color: var(--grey); }
+  .hero-bottom { margin-bottom: 28px; }
+  @keyframes rise { from { transform: translateY(40px); opacity: 0; } to { transform: none; opacity: 1; } }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            overflow-x: hidden;
-        }
+  /* MARQUEE */
+  .marquee {
+    background: var(--white);
+    color: var(--black);
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 14px 0;
+    font-family: var(--display);
+    font-size: clamp(22px, 3vw, 36px);
+    text-transform: uppercase;
+  }
+  .marquee-track { display: inline-block; animation: scroll 24s linear infinite; }
+  .marquee span { padding: 0 .6em; }
+  @keyframes scroll { to { transform: translateX(-50%); } }
 
-        .ambient-glow {
-            position: fixed;
-            top: -200px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 600px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(139, 0, 0, 0.25) 0%, rgba(8, 2, 3, 0) 70%);
-            z-index: -1;
-            pointer-events: none;
-        }
+  /* RELEASE */
+  .release {
+    background: var(--white);
+    color: var(--black);
+    padding: calc(var(--pad) * 1.5) var(--pad);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(28px, 6vw, 96px);
+    align-items: center;
+  }
+  .cover { width: 100%; aspect-ratio: 1; object-fit: cover; filter: grayscale(1) contrast(1.1); display: block; background: #ddd; }
+  .release-date { font-weight: 800; font-size: 15px; margin-bottom: 12px; }
+  .release h2 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(56px, 9vw, 150px);
+    line-height: .9;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .release p { max-width: 40ch; font-size: 18px; margin-bottom: 32px; }
+  .btn {
+    display: inline-block;
+    background: var(--black);
+    color: var(--white);
+    border: 2px solid var(--black);
+    padding: 18px 36px;
+    font-weight: 800;
+    border-radius: 999px;
+    transition: background .2s, color .2s;
+  }
+  .btn:hover { background: var(--white); color: var(--black); }
 
-        header {
-            text-align: center;
-            padding: 80px 20px 40px;
-        }
+  /* BIO */
+  .bio { padding: calc(var(--pad) * 1.5) var(--pad); }
+  .bio h2, .links h2 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(40px, 6vw, 88px);
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 32px;
+  }
+  .bio p { max-width: 28ch; font-size: clamp(24px, 3.4vw, 46px); font-weight: 600; line-height: 1.25; }
 
-        h1.logo {
-            font-size: 4rem;
-            font-weight: 900;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: var(--text-main);
-            text-shadow: 0 0 20px var(--accent-glow);
-            margin-bottom: 10px;
-        }
+  /* LINKS */
+  .links { padding: 0 var(--pad) calc(var(--pad) * 1.5); }
+  .link-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 22px 0;
+    border-top: 1px solid var(--white);
+    font-family: var(--display);
+    font-size: clamp(32px, 6vw, 80px);
+    text-transform: uppercase;
+    line-height: 1;
+    transition: background .2s, color .2s, padding .25s;
+  }
+  .link-row:last-of-type { border-bottom: 1px solid var(--white); }
+  .link-row:hover { background: var(--white); color: var(--black); padding-left: 20px; padding-right: 20px; }
+  .link-row .arrow { font-family: var(--body); font-weight: 400; }
 
-        p.subtitle {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
+  footer { padding: 24px var(--pad) 40px; color: var(--grey); font-size: 14px; }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 20px 80px;
-        }
-
-        section {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 30, 56, 0.15);
-            border-radius: 16px;
-            padding: 40px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            position: relative;
-        }
-
-        section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--primary-red), transparent);
-        }
-
-        h2 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        h2 span {
-            color: var(--primary-red);
-        }
-
-        .bio-text {
-            color: var(--text-muted);
-            line-height: 1.8;
-            font-size: 1.05rem;
-        }
-
-        .upcoming-badge {
-            display: inline-block;
-            background: var(--dark-red);
-            color: #fff;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-            box-shadow: 0 0 10px var(--dark-red);
-        }
-
-        .release-grid {
-            display: grid;
-            grid-template-columns: 200px 1fr;
-            gap: 25px;
-            align-items: center;
-        }
-
-        .cover-art {
-            width: 100%;
-            aspect-ratio: 1/1;
-            background: #fff;
-            border-radius: 12px;
-            border: 1px solid rgba(255, 30, 56, 0.3);
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(139, 0, 0, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .cover-art img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .release-info h3 {
-            font-size: 1.8rem;
-            margin-bottom: 8px;
-            letter-spacing: 1px;
-        }
-
-        .release-info p {
-            color: var(--text-muted);
-            margin-bottom: 20px;
-            font-size: 1rem;
-        }
-
-        .presave-btn {
-            display: inline-block;
-            background: var(--primary-red);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            transition: all 0.2s ease;
-            box-shadow: 0 0 15px var(--accent-glow);
-        }
-
-        .presave-btn:hover {
-            background: #ff3b53;
-            transform: scale(1.03);
-        }
-
-        .links-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-        }
-
-        .social-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 16px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 30, 56, 0.2);
-            border-radius: 10px;
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            letter-spacing: 0.5px;
-        }
-
-        .social-link:hover {
-            background: var(--primary-red);
-            border-color: var(--primary-red);
-            box-shadow: 0 0 15px var(--accent-glow);
-        }
-
-        footer {
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            padding: 20px;
-        }
-
-        @media(max-width: 768px) {
-            .release-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            .cover-art {
-                max-width: 200px;
-                margin: 0 auto;
-            }
-            h1.logo {
-                font-size: 2.8rem;
-            }
-        }
-    </style>
+  @media (max-width: 760px) {
+    .release { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .name { animation: none; }
+    .marquee-track { animation: none; }
+    html { scroll-behavior: auto; }
+  }
+</style>
 </head>
 <body>
 
-    <div class="ambient-glow"></div>
+<header class="hero">
+  <div class="hero-top">
+    <span>Одесская область</span>
+    <a href="#links">Ссылки</a>
+  </div>
+  <div class="hero-bottom">
+    <h1 class="name">Deamxhy</h1>
+    <p class="role">Рэп-исполнитель</p>
+  </div>
+</header>
 
-    <header>
-        <h1 class="logo">Deamxhy</h1>
-        <p class="subtitle">Rap Artist</p>
-    </header>
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Feel Love</span><span>7 августа</span><span>Feel Love</span><span>7 августа</span><span>Feel Love</span><span>7 августа</span><span>Feel Love</span><span>7 августа</span>
+    <span>Feel Love</span><span>7 августа</span><span>Feel Love</span><span>7 августа</span><span>Feel Love</span><span>7 августа</span><span>Feel Love</span><span>7 августа</span>
+  </div>
+</div>
 
-    <div class="container">
-        <!-- Биография -->
-        <section>
-            <h2><span>01 //</span> Биография</h2>
-            <p class="bio-text">
-                Кизыма Максим Владимирович (родился 8 сентября 2010 года) — рэп-исполнитель родом из Одесской области.
-            </p>
-        </section>
-
-        <!-- Новый релиз -->
-        <section>
-            <h2><span>02 //</span> Новый релиз</h2>
-            <div class="upcoming-badge">Релиз 7 августа</div>
-            <div class="release-grid">
-                <div class="cover-art">
-                    <!-- Обложка трека FEEL LOVE -->
-                    <img src="https://t2.genius.com/unsafe/323x323/https%3A%2F%2Fimages.genius.com%2F1dcab253eaea39a13e41e6c9190b1a6d.1000x1000x1.jpg">
-                </div>
-                <div class="release-info">
-                    <h3>FEEL LOVE</h3>
-                    <p>Делай пресейв по ссылке ниже, чтобы не пропустить премьеру.</p>
-                    <a href="https://band.link/bhjor" target="_blank" class="presave-btn">Пресейв</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Ссылки -->
-        <section>
-            <h2><span>03 //</span> Ссылки и соцсети</h2>
-            <div class="links-grid">
-                <a href="https://t.me/deamxhy" target="_blank" class="social-link">Telegram Channel</a>
-                <a href="https://music.yandex.ru/artist/24382587" target="_blank" class="social-link">Яндекс Музыка</a>
-                <a href="https://open.spotify.com/artist/4yrBVMxkaVqZ6TeX3pPGJR?si=tLzSb6zKQmW4xO8Kk4SWIg" target="_blank" class="social-link">Spotify</a>
-            </div>
-        </section>
+<main>
+  <section class="release" id="release">
+    <img class="cover" src="https://t2.genius.com/unsafe/323x323/https%3A%2F%2Fimages.genius.com%2F1dcab253eaea39a13e41e6c9190b1a6d.1000x1000x1.jpg" alt="Обложка трека Feel Love">
+    <div>
+      <p class="release-date">Новый релиз · 7 августа</p>
+      <h2>Feel Love</h2>
+      <p>Сделай пресейв, чтобы не пропустить премьеру.</p>
+      <a class="btn" href="https://band.link/bhjor" target="_blank" rel="noopener">Сделать пресейв</a>
     </div>
+  </section>
 
-    <footer>
-        <p>&copy; 2026 deamxhy. Все права защищены.</p>
-    </footer>
+  <section class="bio" id="bio">
+    <h2>Биография</h2>
+    <p>Кизыма Максим Владимирович, родился 8 сентября 2010 года. Рэп-исполнитель родом из Одесской области.</p>
+  </section>
+
+  <section class="links" id="links">
+    <h2>Слушай и читай</h2>
+    <a class="link-row" href="https://t.me/deamxhy" target="_blank" rel="noopener">Telegram <span class="arrow">↗</span></a>
+    <a class="link-row" href="https://music.yandex.ru/artist/24382587" target="_blank" rel="noopener">Яндекс Музыка <span class="arrow">↗</span></a>
+    <a class="link-row" href="https://open.spotify.com/artist/4yrBVMxkaVqZ6TeX3pPGJR?si=tLzSb6zKQmW4xO8Kk4SWIg" target="_blank" rel="noopener">Spotify <span class="arrow">↗</span></a>
+  </section>
+</main>
+
+<footer>© 2026 deamxhy. Все права защищены.</footer>
 
 </body>
 </html>
