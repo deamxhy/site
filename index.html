@@ -38,7 +38,7 @@
     padding: var(--pad);
     padding-bottom: 0;
   }
-  .hero { position: relative; isolation: isolate; overflow: hidden; }
+  .hero { position: relative; isolation: isolate; overflow: hidden; background-color: #000; }
   .hero::before {
     content: "";
     position: absolute;
@@ -128,6 +128,12 @@
 
   .cover.soon { display: grid; place-items: center; background: var(--black); color: var(--white); font-family: var(--display); font-size: clamp(120px, 28vw, 380px); line-height: 1; }
   .release .artist { font-family: var(--display); font-size: clamp(20px, 2.5vw, 32px); margin-bottom: 12px; }
+  .news { padding: calc(var(--pad) * 1.5) var(--pad) 0; }
+  .news h2 { font-family: var(--display); font-weight: 400; font-size: clamp(32px, 5vw, 70px); text-transform: uppercase; line-height: 1; margin-bottom: 32px; }
+  .news-item { border-top: 1px solid var(--white); border-bottom: 1px solid var(--white); padding: 28px 0; display: grid; grid-template-columns: 140px 1fr; gap: 16px 32px; }
+  .news-date { color: var(--grey); font-weight: 600; font-size: 15px; }
+  .news-item h3 { font-family: var(--display); font-weight: 400; font-size: clamp(24px, 3.4vw, 44px); text-transform: uppercase; line-height: 1.05; margin-bottom: 12px; }
+  .news-item p { max-width: 52ch; font-size: 17px; }
   .out { padding: calc(var(--pad) * 1.5) var(--pad) 0; }
   .out h2 { font-family: var(--display); font-weight: 400; font-size: clamp(32px, 5vw, 70px); text-transform: uppercase; line-height: 1; margin-bottom: 32px; }
   .grid { display: block; }
@@ -172,6 +178,7 @@
 
   @media (max-width: 760px) {
     .release { grid-template-columns: 1fr; }
+    .news-item { grid-template-columns: 1fr; }
   }
   @media (prefers-reduced-motion: reduce) {
     .name { animation: none; }
@@ -184,6 +191,7 @@
 
 <header class="hero">
   <div class="hero-top">
+    <a href="#news">Новости</a>
     <a href="#releases">Релизы</a>
     <a href="#links">Ссылки</a>
   </div>
@@ -205,10 +213,21 @@
     <div>
       <p class="release-date">Новый трек · xx.12.26</p>
       <h2>???</h2>
-      <p class="artist">deamxhy</p>
+      <p class="artist">deamxhy &amp; ???</p>
       <p>Скоро. Подписывайся на Telegram, чтобы узнать первым.</p>
       <a class="btn" href="https://t.me/deamxhy" target="_blank" rel="noopener">Telegram-канал</a>
     </div>
+  </section>
+
+  <section class="news" id="news">
+    <h2>Новости</h2>
+    <article class="news-item">
+      <span class="news-date">19.11.26</span>
+      <div>
+        <h3>Были неполадки</h3>
+        <p>Из-за технических неполадок все треки удалились. Часть треков уже вернули, остальные мы восстанавливаем, скоро всё вернётся. Спасибо за терпение.</p>
+      </div>
+    </article>
   </section>
 
   <section class="out" id="releases">
